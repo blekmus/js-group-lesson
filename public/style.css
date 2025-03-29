@@ -1,0 +1,186 @@
+body{
+    margin:0;
+    max-height: 100%;
+    font-family: monospace;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: 5.2% 70% 24.8%;
+    grid-template-rows: auto;
+    grid-template-areas:
+  "sidebar msgbox profilebox";
+}
+
+.topbar{
+    width: 100%;
+    background: #2d2732;
+    height: 30px;
+    box-shadow: 1px 3px 20px #0000009e;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+}
+
+.topBarContainer{
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    gap: 14px;
+    height: fit-content;
+}
+
+.discordImgTopBar{
+    width: 20px;
+}
+
+.topBarText{
+    margin: 0;
+    color: white;
+}
+
+.side_bar{
+    display: block;
+    width: fit-content;
+    background: #312b37;
+    padding: 0 10px 0 10px;
+    z-index: 0;
+    grid-area: sidebar;
+    box-shadow: 0px 1px 7px #0000009c;
+}
+
+.sideBarAllImgContainer{
+    margin-top: 60px;
+}
+
+.sideBarImgContainer{
+    padding: 10px;
+    background: #dfe2e3;
+    border-radius: 11px;
+    width: fit-content;
+    display: block;
+    border: 2px solid black;
+    margin-bottom: 15px;
+}
+
+.discordImg, .mcImg, .twitchImg{
+    width:25px;
+    margin:0;
+}
+
+.msg-area{
+    grid-area: msgbox;
+    width: 100%;
+    height: 100vh;
+    background: #282222;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 80% 20%;
+    grid-template-areas:
+  "Display" 
+  "Search ";
+    border: 1px solid black;
+}
+
+.msgDisplay{
+    width: 92%;
+    height: 85%;
+    background-color: #75588238;
+    border-radius: 8px;
+    margin: 73px auto auto 35px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.inputType{
+    display: flex;
+    height: 30px;
+    grid-area: Search;
+    margin: auto;
+      margin-left: auto;
+    margin-left: 35px;
+}
+
+.inputType input{
+    background-color: #3b323c;
+    color: white;
+    min-width: 62vw;
+    padding: 15px;
+    border-radius: 8px;
+    border-style:none;
+    height:10px;
+}
+
+.profileArea{
+    grid-area: profilebox;
+    min-width: 300px;
+    height: 100dvh;
+    background: #262226;
+    box-shadow: 2px 9px 20px black;
+}
+
+/* ---------------------------------------------------------------------- */
+
+#imgBox{
+    position: relative;
+    margin-top: 50px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 4px 1px 6px black;
+}
+
+.background{
+
+}
+.background img{
+    width: 100%;
+    display: block;
+}
+.pic{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 9%;
+    left: 2%;
+}
+.pic img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.detailsContainer{
+
+}
+
+.username{
+    margin: 10px 0 10px 24px;
+    color:White;
+    font-style: italic;
+
+}
+
+.description {
+    background: #262226;
+    padding: 15px 0 0 0;    
+    font-style: italic;
+  }
+  
+  .description article {
+    background: #362b39;
+    width: 80%; 
+    margin: 30px auto 0;
+    border-radius: 30px;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .description article p {
+    padding: 10px;
+    color: white;
+    font-size: 1rem;
+    word-break: break-word;    
+    overflow-wrap: break-word;  
+    white-space: normal;        
+  }
