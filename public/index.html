@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "style.css">
+     <!-- is used to load the Socket.IO client library into your webpage. 
+      This library provides all the functionality needed for the client-side 
+      code to establish a WebSocket connection (or fallback connection) with 
+      your backend server. I.E A PREREQUISITE FOR CLIENTSIDE JS TO INITIATE THE HANDSHAKE -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script defer src = "script.js"></script>
     <title>Discord Lesson</title>
 </head>
@@ -61,7 +66,5 @@
         </div>
     </div>
 
-</body>
-    
 </body>
 </html>

@@ -174,15 +174,21 @@ body{
     border-radius: 100%;
 }
 
-.detailsContainer{
+/* .detailsContainer{
 
-}
+} */
 
 .username{
     margin: 10px 0 10px 24px;
     color:White;
     font-style: italic;
 
+}
+
+.yourUsernameClass::first-line{
+    color:#044508ce;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .description {
