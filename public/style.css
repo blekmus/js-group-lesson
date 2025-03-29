@@ -92,6 +92,31 @@ body{
     overflow-x: hidden;
 }
 
+.msgDisplay ul{
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100vh;
+}
+
+.msgDisplay ul li{
+    width: 40%;
+    text-align: left;
+    color: white;
+    list-style:none;
+    background: #0d8a55;
+    border-radius: 8px;
+    padding:10px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+/* animation */
+.msgDisplay .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .inputType{
     display: flex;
     height: 30px;
