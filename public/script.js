@@ -29,6 +29,8 @@ userInput.addEventListener("keydown", (e) => {
 
             socket.emit('frontEndMsgReceived', ({username, message: userMessage}));
             userInput.value = "";
+
+            addMessage({username, message: userMessage}, false);
         } 
         else 
         {
@@ -36,23 +38,48 @@ userInput.addEventListener("keydown", (e) => {
         }
     }
 });
-socket.on('backEndMsgSent', ({username, message})=>{
-    let newMessage = document.createElement("li");
-    const finalMessage = `@${username}<br>${message}`;
-    console.log("finalMessage is:\n" + finalMessage);
-    newMessage.innerHTML = finalMessage;
-    msgDisplay.prepend(newMessage);
 
-    setTimeout(() => {
-        newMessage.classList.add("fade-in");
-        //changes the color and the style of the username.
-        newMessage.classList.add("yourUsernameClass");
-            const msgContainer = document.querySelector(".msgDisplay");
-        
-    //     //telling the document (the container of ul which is msgDisplay) to scroll down
-    //     //by making its current scrollTop property it's new maxheight (post new item's addition)
-    //     //scrollTop = 0 (top of the element), scrollTop = 100 (scroll down 100 pixels).
-            msgContainer.scrollTop = msgContainer.scrollHeight;
-    }, 100);
+
+socket.on('backEndMsgSent', ({username: senderUser, message})=>{
+    console.log("received from: " + senderUser);
+    let isMine;
+    if(senderUser === username){
+        isMine = true;
+    }
+    if(isMine == false){
+        addMessage({username: senderUser, message}, isMine);
+    }
 
 });
+
+function addMessage({username, message}, myOwnMessage){
+    let newMessage = document.createElement('li');
+    const finalMessage = `@${username}<br>${message}`;
+    newMessage.innerHTML = finalMessage;
+
+    if(myOwnMessage == true){
+        console.log("my own message was fired");
+        msgDisplay.prepend(newMessage);
+        setTimeout(() => {
+            newMessage.classList.add("fade-in");
+            //changes the color and the style of the username.
+            newMessage.classList.add("yourOwnMsgLi");
+                const msgContainer = document.querySelector(".msgDisplay");
+            
+        //     //telling the document (the container of ul which is msgDisplay) to scroll down
+        //     //by making its current scrollTop property it's new maxheight (post new item's addition)
+        //     //scrollTop = 0 (top of the element), scrollTop = 100 (scroll down 100 pixels).
+                msgContainer.scrollTop = msgContainer.scrollHeight;
+        }, 100);
+    }
+    else{
+        msgDisplay.prepend(newMessage);
+        console.log("someone else's message was fired");
+        setTimeout(() => {
+            newMessage.classList.add("fade-in");
+            newMessage.classList.add("othersMsgLi")
+            const msgContainer = document.querySelector(".msgDisplay");
+            msgContainer.scrollTop = msgContainer.scrollHeight;
+        }, 100);
+    }
+};

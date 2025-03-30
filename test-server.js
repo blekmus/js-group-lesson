@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
     //creating a listener for message by the front-end to the backend server (test-server.js)
     socket.on('frontEndMsgReceived', ({username, message})=>{
         console.log("Server received frontEndMsgReceived:", {username, message});
-        socket.broadcast.emit('backEndMsgSent', ({username, message}));
+        socket.broadcast.emit('backEndMsgSent', {username, message});
     });
     
     //attaching the unique user (socket) to a disconnect check

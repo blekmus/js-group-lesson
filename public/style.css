@@ -19,7 +19,7 @@ body{
     box-shadow: 1px 3px 20px #0000009e;
     padding: 10px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
 }
 
 .topBarContainer{
@@ -44,7 +44,7 @@ body{
     width: fit-content;
     background: #312b37;
     padding: 0 10px 0 10px;
-    z-index: 0;
+    z-index: 1;
     grid-area: sidebar;
     box-shadow: 0px 1px 7px #0000009c;
 }
@@ -96,14 +96,41 @@ body{
     display: flex;
     flex-direction: column-reverse;
     height: 100vh;
+    padding:0;
+}
+
+.othersMsgLi{
+    align-self: end;
+    margin-right: 40px;
+    background: gray;
+    color:black
+}
+
+
+.othersMsgLi::first-line{
+    color:#282626;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+.yourOwnMsgLi{
+    background: #0d8a55;
+    color:white;
+ 
+}
+
+
+.yourOwnMsgLi::first-line{
+    color:#044508ce;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .msgDisplay ul li{
     width: 40%;
     text-align: left;
-    color: white;
     list-style:none;
-    background: #0d8a55;
     border-radius: 8px;
     padding:10px;
     margin-bottom: 10px;
@@ -111,6 +138,7 @@ body{
     transform: translateY(10px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
+
 /* animation */
 .msgDisplay .fade-in {
     opacity: 1;
@@ -142,6 +170,8 @@ body{
     height: 100dvh;
     background: #262226;
     box-shadow: 2px 9px 20px black;
+    z-index: 1;
+
 }
 
 /* ---------------------------------------------------------------------- */
@@ -181,13 +211,6 @@ body{
 .username{
     margin: 10px 0 10px 24px;
     color:White;
-    font-style: italic;
-
-}
-
-.yourUsernameClass::first-line{
-    color:#044508ce;
-    font-weight: bold;
     font-style: italic;
 }
 
