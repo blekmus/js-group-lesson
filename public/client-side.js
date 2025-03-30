@@ -1,6 +1,6 @@
-const socket = io("http://10.0.0.179:3000/");
+const socket = io("https://js-group-demo.onrender.com");
 //importing the messageUI script to use messageUI functions from it
-import { yourOwnMsgUI, OthersMsgUI } from "./cmessageUI.js";
+import { yourOwnMsgUI, OthersMsgUI } from "./messageUI.js";
 
 //adding the username h2 element as a var to be updated
 const toBeUpdatedUserName = document.getElementById("username");
@@ -14,7 +14,7 @@ const msgDisplay = document.querySelector(".msgDisplay ul");
 //creating a var for msgContainer (the parent div to the ul)
 const msgContainer = document.querySelector(".msgDisplay");
 
-var roomkey = "general";
+var roomkey = "lesson";
 
 
 //creating a username, whatever you want it to be
