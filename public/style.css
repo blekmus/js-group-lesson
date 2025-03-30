@@ -96,14 +96,13 @@ body{
     display: flex;
     flex-direction: column-reverse;
     height: 100vh;
-    padding:0;
 }
 
 .othersMsgLi{
     align-self: end;
     margin-right: 40px;
     background: gray;
-    color:black
+    color:rgb(255, 255, 255)
 }
 
 

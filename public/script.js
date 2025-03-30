@@ -27,10 +27,10 @@ userInput.addEventListener("keydown", (e) => {
 
             const userMessage = userInput.value;
 
-            socket.emit('frontEndMsgReceived', ({username, message: userMessage}));
+            socket.emit('general', ({username, message: userMessage}));
             userInput.value = "";
 
-            addMessage({username, message: userMessage}, false);
+            addMessage({username, message: userMessage}, true);
         } 
         else 
         {
@@ -40,9 +40,9 @@ userInput.addEventListener("keydown", (e) => {
 });
 
 
-socket.on('backEndMsgSent', ({username: senderUser, message})=>{
+socket.on('general', ({username: senderUser, message})=>{
     console.log("received from: " + senderUser);
-    let isMine;
+    let isMine = false;
     if(senderUser === username){
         isMine = true;
     }
