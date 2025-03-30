@@ -1,4 +1,6 @@
 const socket = io("http://localhost:3000/");
+//importing the messageUI script to use messageUI functions from it
+import { yourOwnMsgUI, OthersMsgUI } from "./messageUI.js";
 
 //adding the username h2 element as a var to be updated
 const toBeUpdatedUserName = document.getElementById("username");
@@ -8,6 +10,12 @@ const toBeUpdatedDesc = document.getElementById("description");
 let userInput = document.getElementById("input") 
 //creating a var for the message display area
 const msgDisplay = document.querySelector(".msgDisplay ul");
+
+//creating a var for msgContainer (the parent div to the ul)
+const msgContainer = document.querySelector(".msgDisplay");
+
+var roomkey = "general";
+
 
 //creating a username, whatever you want it to be
 let username = "jakejellypie";
@@ -27,20 +35,21 @@ userInput.addEventListener("keydown", (e) => {
 
             const userMessage = userInput.value;
 
-            socket.emit('general', ({username, message: userMessage}));
+            socket.emit(roomkey, ({username, message: userMessage}));
             userInput.value = "";
 
             addMessage({username, message: userMessage}, true);
         } 
         else 
         {
-            alert("Write something");
+            //do nothing if the user enters nothing
+            e.NONE
         }
     }
 });
 
 
-socket.on('general', ({username: senderUser, message})=>{
+socket.on(roomkey, ({username: senderUser, message})=>{
     console.log("received from: " + senderUser);
     let isMine = false;
     if(senderUser === username){
@@ -55,31 +64,19 @@ socket.on('general', ({username: senderUser, message})=>{
 function addMessage({username, message}, myOwnMessage){
     let newMessage = document.createElement('li');
     const finalMessage = `@${username}<br>${message}`;
+    console.log("finalMessage is: " + finalMessage);
+    console.log("myOwnMessage status is " + myOwnMessage);
     newMessage.innerHTML = finalMessage;
 
     if(myOwnMessage == true){
         console.log("my own message was fired");
         msgDisplay.prepend(newMessage);
-        setTimeout(() => {
-            newMessage.classList.add("fade-in");
-            //changes the color and the style of the username.
-            newMessage.classList.add("yourOwnMsgLi");
-                const msgContainer = document.querySelector(".msgDisplay");
-            
-        //     //telling the document (the container of ul which is msgDisplay) to scroll down
-        //     //by making its current scrollTop property it's new maxheight (post new item's addition)
-        //     //scrollTop = 0 (top of the element), scrollTop = 100 (scroll down 100 pixels).
-                msgContainer.scrollTop = msgContainer.scrollHeight;
-        }, 100);
+        yourOwnMsgUI(newMessage, msgContainer);
     }
     else{
         msgDisplay.prepend(newMessage);
         console.log("someone else's message was fired");
-        setTimeout(() => {
-            newMessage.classList.add("fade-in");
-            newMessage.classList.add("othersMsgLi")
-            const msgContainer = document.querySelector(".msgDisplay");
-            msgContainer.scrollTop = msgContainer.scrollHeight;
-        }, 100);
+        OthersMsgUI(newMessage, msgContainer);
     }
 };
+
