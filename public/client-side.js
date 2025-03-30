@@ -1,6 +1,6 @@
-const socket = io("http://localhost:3000/");
+const socket = io("http://10.0.0.179:3000/");
 //importing the messageUI script to use messageUI functions from it
-import { yourOwnMsgUI, OthersMsgUI } from "./messageUI.js";
+import { yourOwnMsgUI, OthersMsgUI } from "./cmessageUI.js";
 
 //adding the username h2 element as a var to be updated
 const toBeUpdatedUserName = document.getElementById("username");
@@ -47,7 +47,6 @@ userInput.addEventListener("keydown", (e) => {
         }
     }
 });
-
 
 socket.on(roomkey, ({username: senderUser, message})=>{
     console.log("received from: " + senderUser);
