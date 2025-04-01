@@ -14,8 +14,7 @@ const msgDisplay = document.querySelector(".msgDisplay ul");
 //creating a var for msgContainer (the parent div to the ul)
 const msgContainer = document.querySelector(".msgDisplay");
 
-var roomkey = "lesson";
-
+var roomkey = "general";
 
 //creating a username, whatever you want it to be
 let username = "jakejellypie";
